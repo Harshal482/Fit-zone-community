@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FitZone – Login</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg,#0f172a,#1e293b);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-card {
+    background: rgba(15,23,42,0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(249,115,22,0.3);
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  }
+  .login-card input:focus {
+    outline: none;
+    border-color: #f97316;
+    box-shadow: 0 0 0 3px rgba(249,115,22,0.3);
+  }
+</style>
+</head>
+<body>
+
+<div class="login-card">
+  <h2 class="text-3xl font-bold text-orange-500 text-center mb-6"><i class="fas fa-dumbbell mr-2"></i> FitZone</h2>
+  <p class="text-gray-300 text-center mb-6">Login to your account</p>
+
+  <form id="loginForm" class="space-y-4">
+    <div>
+      <label for="email" class="text-gray-300 mb-1 block">Email</label>
+      <input type="email" id="email" class="w-full p-3 rounded-lg bg-gray-800 border border-gray-700 text-white" placeholder="Enter your email" required>
+    </div>
+    <div>
+      <label for="password" class="text-gray-300 mb-1 block">Password</label>
+      <input type="password" id="password" class="w-full p-3 rounded-lg bg-gray-800 border border-gray-700 text-white" placeholder="Enter your password" required>
+    </div>
+    <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-black font-semibold py-3 rounded-lg transition-colors duration-300 flex justify-center items-center">
+      <i class="fas fa-sign-in-alt mr-2"></i> Login
+    </button>
+    <p class="text-gray-400 text-sm text-center">Don't have an account? <a href="Register.html" class="text-orange-500 hover:underline">Sign Up</a></p>
+  </form>
+</div>
+
+<script>
+  const form = document.getElementById('loginForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // Simple demo login
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    if(email && password){
+      alert('Login successful!');
+      window.location.href = "home.html"; // Redirect to profile after login
+    } else {
+      alert('Please enter email and password.');
+    }
+  });
+</script>
+
+</body>
+</html>
