@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FitZone – Direct Messages</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #0f172a;
+  color: #fff;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.navbar-link { transition: all 0.3s ease; }
+.navbar-link.active { color: #f97316; font-weight: 600; }
+.chat-sidebar { width: 280px; background-color: rgba(15,23,42,0.85); border-right: 1px solid rgba(249,115,22,0.3); display: flex; flex-direction: column; }
+.chat-list { flex-grow: 1; overflow-y: auto; }
+.chat-user { display: flex; align-items: center; padding: 0.8rem; cursor: pointer; transition: all 0.2s ease; border-bottom: 1px solid rgba(249,115,22,0.1); }
+.chat-user:hover { background-color: rgba(249,115,22,0.1); }
+.chat-user img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; margin-right: 0.8rem; border: 2px solid rgba(249,115,22,0.5); }
+.chat-user h4 { font-weight: 600; margin: 0; }
+.chat-panel { flex-grow: 1; display: flex; flex-direction: column; background-color: rgba(15,23,42,0.9); }
+.chat-header { padding: 1rem; border-bottom: 1px solid rgba(249,115,22,0.3); display: flex; align-items: center; }
+.chat-header img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; margin-right: 1rem; border: 2px solid rgba(249,115,22,0.5); }
+.chat-messages { flex-grow: 1; padding: 1rem; overflow-y: auto; display: flex; flex-direction: column; gap: 0.5rem; }
+.message { max-width: 70%; padding: 0.6rem 1rem; border-radius: 1rem; word-wrap: break-word; }
+.message.sent { background-color: #f97316; color: black; align-self: flex-end; }
+.message.received { background-color: rgba(75,85,99,0.8); align-self: flex-start; }
+.chat-input { display: flex; padding: 0.8rem; border-top: 1px solid rgba(249,115,22,0.3); }
+.chat-input input { flex-grow: 1; border-radius: 9999px; padding: 0.5rem 1rem; border: none; outline: none; background-color: rgba(31,41,55,0.8); color: #fff; margin-right: 0.5rem; }
+.chat-input button { background-color: #f97316; color: black; padding: 0.5rem 1rem; border-radius: 9999px; font-weight: 600; transition: background-color 0.3s ease; }
+.chat-input button:hover { background-color: #ea580c; }
+.scrollbar-custom::-webkit-scrollbar { width:6px; height:6px; }
+.scrollbar-custom::-webkit-scrollbar-thumb { background-color:#f97316; border-radius:3px; border:1px solid #1f2937; }
+.scrollbar-custom::-webkit-scrollbar-track { background-color:#1f2937; border-radius:3px; }
+</style>
+</head>
+<body>
+
+<header class="bg-black py-6 px-4 shadow-md sticky top-0 z-50 w-full flex justify-between items-center">
+  <h1 class="text-3xl font-bold text-orange-500 flex items-center"><i class="fas fa-dumbbell mr-3"></i> 🏋️‍♀️ FitZone</h1>
+  <nav class="space-x-6">
+    <a href="home.html" class="navbar-link font-semibold">Home</a>
+    <a href="Profile.html" class="navbar-link font-semibold">Profile</a>
+    <a href="Membership.html" class="navbar-link font-semibold">Membership</a>
+    <a href="Settings.html" class="navbar-link font-semibold">Settings</a>
+    <a href="About.html" class="navbar-link font-semibold">About</a>
+  </nav>
+</header>
+
+<main class="flex flex-grow">
+  <!-- Sidebar -->
+  <div class="chat-sidebar">
+    <div class="chat-list scrollbar-custom" id="chat-list">
+      <div class="chat-user" data-user="Priya Soni">
+        <img src="https://picsum.photos/seed/user101/50/50.jpg" alt="Priya">
+        <h4>Priya Soni</h4>
+      </div>
+      <div class="chat-user" data-user="Rahul Sharma">
+        <img src="https://picsum.photos/seed/user102/50/50.jpg" alt="Rahul">
+        <h4>Rahul Sharma</h4>
+      </div>
+      <div class="chat-user" data-user="Anjali Mehta">
+        <img src="https://picsum.photos/seed/user103/50/50.jpg" alt="Anjali">
+        <h4>Anjali Mehta</h4>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chat Panel -->
+  <div class="chat-panel flex-1 flex flex-col">
+    <div class="chat-header" id="chat-header">
+      <img src="https://picsum.photos/seed/user101/50/50.jpg" alt="User" id="chat-header-img">
+      <h3 id="chat-header-name" class="text-xl font-semibold">Select a chat</h3>
+    </div>
+    <div class="chat-messages scrollbar-custom" id="chat-messages">
+      <p class="text-gray-400">No messages yet.</p>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="message-input" placeholder="Type a message...">
+      <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+</main>
+
+<script>
+// Sample chat data
+const chats = {
+  "Priya Soni": [
+    { text: "Hey! Are you joining the workout today?", type: "received" },
+    { text: "Yes! I will be there at 6 PM.", type: "sent" },
+    { text: "Great! See you then.", type: "received" }
+  ],
+  "Rahul Sharma": [
+    { text: "Did you check the new HIIT challenge?", type: "received" },
+    { text: "Yes, I joined it today.", type: "sent" }
+  ],
+  "Anjali Mehta": [
+    { text: "Can you share your diet plan?", type: "received" }
+  ]
+};
+
+const chatList = document.getElementById('chat-list');
+const chatMessages = document.getElementById('chat-messages');
+const chatHeaderName = document.getElementById('chat-header-name');
+const chatHeaderImg = document.getElementById('chat-header-img');
+let currentChat = null;
+
+// Load chat messages
+function loadChat(user) {
+  currentChat = user;
+  chatHeaderName.textContent = user;
+  chatHeaderImg.src = `https://picsum.photos/seed/${user.replace(" ","")}/50/50.jpg`;
+  chatMessages.innerHTML = '';
+  if (chats[user] && chats[user].length > 0) {
+    chats[user].forEach(msg => {
+      const div = document.createElement('div');
+      div.className = `message ${msg.type}`;
+      div.textContent = msg.text;
+      chatMessages.appendChild(div);
+    });
+  } else {
+    chatMessages.innerHTML = '<p class="text-gray-400">No messages yet.</p>';
+  }
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+// Click on user
+document.querySelectorAll('.chat-user').forEach(userEl => {
+  userEl.addEventListener('click', () => {
+    const user = userEl.dataset.user;
+    loadChat(user);
+  });
+});
+
+// Send message
+document.getElementById('send-btn').addEventListener('click', () => {
+  const input = document.getElementById('message-input');
+  const text = input.value.trim();
+  if (text && currentChat) {
+    // Add to chat window
+    const div = document.createElement('div');
+    div.className = 'message sent';
+    div.textContent = text;
+    chatMessages.appendChild(div);
+    input.value = '';
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    // Optional: Add to chat object for persistence
+    if (!chats[currentChat]) chats[currentChat] = [];
+    chats[currentChat].push({ text, type: "sent" });
+  }
+});
+
+// Press Enter to send
+document.getElementById('message-input').addEventListener('keypress', e => {
+  if(e.key === 'Enter') document.getElementById('send-btn').click();
+});
+</script>
+
+</body>
+</html>
