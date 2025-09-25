@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FitZone – Settings</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0f172a;
+    color: #fff;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .settings-card {
+    background: rgba(15,23,42,0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(249,115,22,0.3);
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  }
+  .settings-card:hover {
+    border-color: rgba(249,115,22,0.5);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+  }
+  .settings-link:hover {
+    color: #f97316;
+  }
+</style>
+</head>
+<body>
+
+<header class="bg-black py-6 px-4 shadow-md sticky top-0 z-50 w-full flex justify-between items-center">
+  <h1 class="text-3xl font-bold text-orange-500 flex items-center"><i class="fas fa-dumbbell mr-3"></i> 🏋️‍♀️ FitZone</h1>
+  <nav class="space-x-6">
+    <a href="home.html" class="navbar-link text-gray-300  hover:text-orange-500">Home</a>
+    <a href="Profile.html" class="text-gray-300 hover:text-orange-500 font-semibold">Profile</a>
+    <a href="Membership.html" class="navbar-link active font-semibold">Membership</a>
+    <a href="Settings.html" class="text-orange-500 font-bold">Settings</a>
+    <a href="" class="text-gray-300 hover:text-orange-500 font-semibold">About</a>
+  </nav>
+</header>
+
+<main class="flex-grow w-full px-4">
+  <h2 class="text-4xl font-bold text-orange-500 text-center mt-8">Settings</h2>
+
+  <div class="settings-card mt-8 space-y-4">
+    <a href="#" class="flex justify-between items-center p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors duration-300 settings-link">
+      <span>Edit Profile</span>
+      <i class="fas fa-chevron-right"></i>
+    </a>
+    <a href="#" class="flex justify-between items-center p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors duration-300 settings-link">
+      <span>Change Password</span>
+      <i class="fas fa-chevron-right"></i>
+    </a>
+    <a href="#" class="flex justify-between items-center p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors duration-300 settings-link">
+      <span>Notifications</span>
+      <i class="fas fa-chevron-right"></i>
+    </a>
+    <a href="#" class="flex justify-between items-center p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors duration-300 settings-link">
+      <span>Privacy & Security</span>
+      <i class="fas fa-chevron-right"></i>
+    </a>
+    <button id="logoutBtn" class="w-full p-4 bg-orange-500 hover:bg-orange-600 text-black font-semibold rounded-lg mt-4 flex justify-center items-center transition-colors duration-300">
+      <i class="fas fa-sign-out-alt mr-2"></i> Logout
+    </button>
+  </div>
+</main>
+
+<footer class="bg-black py-6 text-center text-gray-500 mt-auto w-full">
+  <div class="flex justify-between items-center px-4">
+    <h3 class="text-xl font-bold text-orange-500 flex items-center"><i class="fas fa-dumbbell mr-2"></i> 🏋️‍♀️ FitZone</h3>
+    <div class="flex space-x-4">
+      <a href="#" class="text-gray-400 hover:text-orange-500"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="text-gray-400 hover:text-orange-500"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="text-gray-400 hover:text-orange-500"><i class="fab fa-twitter"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    alert('You have been logged out.');
+    window.location.href = 'Login.html';
+  });
+</script>
+
+</body>
+</html>
