@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FitZone – Membership</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #0f172a;
+  color: #fff;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.navbar-link {
+  transition: all 0.3s ease;
+}
+.navbar-link.active {
+  color: #f97316;
+  font-weight: 600;
+}
+.card {
+  background: rgba(15,23,42,0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(249,115,22,0.3);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+.card h2 {
+  color: #f97316;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.card p {
+  color: #cbd5e1;
+  margin-bottom: 0.5rem;
+}
+.stat-card {
+  background: rgba(31,41,55,0.8);
+  border-radius: 1rem;
+  padding: 1rem;
+  text-align: center;
+}
+.stat-card h3 {
+  color: #f97316;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+.stat-card p {
+  color: #cbd5e1;
+  font-size: 1rem;
+}
+.btn-renew {
+  background-color: #f97316;
+  color: black;
+  padding: 0.7rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+.btn-renew:hover {
+  background-color: #ea580c;
+}
+.select-plan {
+  background-color: rgba(31,41,55,0.8);
+  color: #cbd5e1;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+}
+</style>
+</head>
+<body>
+
+<header class="bg-black py-6 px-4 shadow-md sticky top-0 z-50 w-full flex justify-between items-center">
+  <h1 class="text-3xl font-bold text-orange-500 flex items-center"><i class="fas fa-dumbbell mr-3"></i> 🏋️‍♀️ FitZone</h1>
+  <nav class="space-x-6">
+    <a href="home.html" class="navbar-link font-semibold">Home</a>
+    <a href="Profile.html" class="navbar-link font-semibold">Profile</a>
+    <a href="Membership.html" class="navbar-link active font-semibold">Membership</a>
+    <a href="Settings.html" class="navbar-link font-semibold">Settings</a>
+    <a href="About.html" class="navbar-link font-semibold">About</a>
+  </nav>
+</header>
+
+<main class="flex-grow w-full px-4 py-8 max-w-5xl mx-auto">
+
+  <!-- User Info -->
+  <div class="card">
+    <h2>Personal Details</h2>
+    <p><strong>Name:</strong> John Doe</p>
+    <p><strong>Email:</strong> johndoe@example.com</p>
+    <p><strong>Phone:</strong> +1 234 567 890</p>
+    <p><strong>Membership ID:</strong> FZ-1023</p>
+  </div>
+
+  <!-- Gym Details -->
+  <div class="card">
+    <h2>Gym Details</h2>
+    <p><strong>Preferred Gym:</strong> FitZone Downtown</p>
+    <p><strong>Joining Date:</strong> 01 Jan 2025</p>
+    <p><strong>Membership Status:</strong> Active</p>
+    <p><strong>Next Payment Due:</strong> 01 Oct 2025</p>
+  </div>
+
+  <!-- Subscription Plan -->
+  <div class="card">
+    <h2>Subscription Plan</h2>
+    <p><strong>Current Plan:</strong> Premium Monthly</p>
+    <p><strong>Duration:</strong> 1 Month</p>
+    <p><strong>Price:</strong> $49.99</p>
+    <p><strong>Renewal:</strong> Auto-renew</p>
+
+    <div class="mt-4">
+      <label for="plan-select" class="font-semibold mb-2 block">Choose Plan to Renew:</label>
+      <select id="plan-select" class="select-plan w-full md:w-1/2 mb-4">
+        <option value="premium-monthly" selected>Premium Monthly - $49.99</option>
+        <option value="premium-quarterly">Premium Quarterly - $129.99</option>
+        <option value="premium-yearly">Premium Yearly - $499.99</option>
+      </select>
+      <button id="renew-btn" class="btn-renew">Renew Plan</button>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+    <div class="stat-card">
+      <h3>Workouts Completed</h3>
+      <p>45</p>
+    </div>
+    <div class="stat-card">
+      <h3>Calories Burned</h3>
+      <p>12,500 kcal</p>
+    </div>
+    <div class="stat-card">
+      <h3>Active Days</h3>
+      <p>30</p>
+    </div>
+    <div class="stat-card">
+      <h3>Achievements</h3>
+      <p>5 Badges</p>
+    </div>
+  </div>
+</main>
+
+<footer class="bg-black py-6 text-center text-gray-500 mt-auto w-full">
+  <div class="flex justify-between items-center px-4">
+    <h3 class="text-xl font-bold text-orange-500 flex items-center"><i class="fas fa-dumbbell mr-2"></i> 🏋️‍♀️ FitZone</h3>
+    <div class="flex space-x-4">
+      <a href="#" class="text-gray-400 hover:text-orange-500"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="text-gray-400 hover:text-orange-500"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="text-gray-400 hover:text-orange-500"><i class="fab fa-twitter"></i></a>
+    </di
